@@ -1,5 +1,7 @@
 # react-c3js
 
+[![NPM version][npm-image]][npm-url]
+
 React component for [C3.js](http://c3js.org/)
 
 Note: `c3.css` is not included.
@@ -40,7 +42,14 @@ const names = {
   data3: 'Name 3'
 };
 
-ReactDOM.render(<DataLineChart src={src} names={names} />, document.body)
+const mountNode = document.getElementById('react-c3js');
+
+ReactDOM.render((
+  <DataLineChart
+    src={src}
+    names={names}
+  />
+), mountNode);
 
 ```
 
@@ -80,3 +89,6 @@ Check out [C3.js Reference](http://c3js.org/reference.html) for more details.
 ## License
 
 MIT
+
+[npm-image]: https://img.shields.io/npm/v/react-c3js.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/react-c3js
