@@ -1,0 +1,44 @@
+{
+  "name": "react-c3js",
+  "version": "0.1.0",
+  "description": "React component for C3.js",
+  "main": "lib/index.js",
+  "files": [
+    "*.md",
+    "lib",
+    "src"
+  ],
+  "scripts": {
+    "build": "mkdir -p lib && babel src/index.js -o lib/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bcbcarl/react-c3js.git"
+  },
+  "keywords": [
+    "react",
+    "react-component",
+    "component",
+    "c3",
+    "chart",
+    "graph"
+  ],
+  "author": "Carl X. Su <bcbcarl@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bcbcarl/react-c3js/issues"
+  },
+  "homepage": "https://github.com/bcbcarl/react-c3js#readme",
+  "peerDependencies": {
+    "react": "^0.14.0"
+  },
+  "dependencies": {
+    "c3": "^0.4.10"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.2.0",
+    "babel-preset-es2015": "^6.1.18",
+    "babel-preset-react": "^6.1.18",
+    "babel-preset-stage-0": "^6.1.18"
+  }
+}
