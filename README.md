@@ -15,6 +15,8 @@ $ npm install --save react-c3js
 ## Usage
 
 ```JavaScript
+'use strict';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import C3Chart from 'react-c3js';
