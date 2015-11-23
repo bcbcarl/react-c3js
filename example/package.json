@@ -1,0 +1,24 @@
+{
+  "name": "hello_c3js",
+  "version": "0.1.1",
+  "description": "An example for react-c3js",
+  "main": "dist/app.js",
+  "scripts": {
+    "build": "mkdir -p dist && browserify -t babelify src/app.js -vo dist/app.js"
+  },
+  "author": "Carl X. Su <bcbcarl@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "c3": "^0.4.10",
+    "react": "^0.14.0",
+    "react-c3js": "^0.1.1",
+    "react-dom": "^0.14.0"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.1.18",
+    "babel-preset-react": "^6.1.18",
+    "babel-preset-stage-0": "^6.1.18",
+    "babelify": "^7.2.0",
+    "browserify": "^12.0.1"
+  }
+}
