@@ -118,4 +118,4 @@ export default class C3Chart extends React.Component {
     const style = this.props.style ? this.props.style : {};
     return (<div className={className} style={style} />);
   }
-};
+}
