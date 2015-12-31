@@ -39,10 +39,12 @@ export default class C3Chart extends React.Component {
   }
 
   componentDidMount() {
+    this.mounted = true;
     this.renderChart();
   }
 
   componentWillUmount() {
+    this.mounted = false;
     this.destroyChart();
   }
 
@@ -57,7 +59,7 @@ export default class C3Chart extends React.Component {
   }
 
   renderChart() {
-    if (!this.isMounted()) {
+    if (!this.mounted) {
       return;
     }
 

@@ -1,6 +1,6 @@
 {
   "name": "react-c3js",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "React component for C3.js",
   "main": "lib/index.js",
   "files": [
