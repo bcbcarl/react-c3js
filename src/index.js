@@ -43,6 +43,10 @@ export default class C3Chart extends React.Component {
   }
 
   componentWillUmount() {
+    this.destroyChart();
+  }
+
+  destroyChart() {
     if (this.chart) {
       try {
         this.chart = this.chart.destroy();
@@ -53,6 +57,14 @@ export default class C3Chart extends React.Component {
   }
 
   renderChart() {
+    if (!this.isMounted()) {
+      return;
+    }
+
+    if (this.chart) {
+      this.destroyChart();
+    }
+
     const data = this.props.data;
     const size = this.props.size || {};
     const padding = this.props.padding || {};
@@ -109,11 +121,10 @@ export default class C3Chart extends React.Component {
       donut,
       gauge
     });
-
-    return this.chart;
   }
 
   render() {
+    this.renderChart();
     const className = this.props.className ? ' ' + this.props.className : '';
     const style = this.props.style ? this.props.style : {};
     return (<div className={className} style={style} />);
