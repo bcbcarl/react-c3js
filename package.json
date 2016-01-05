@@ -30,7 +30,8 @@
   },
   "homepage": "https://github.com/bcbcarl/react-c3js#readme",
   "peerDependencies": {
-    "react": "^0.14.0"
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0"
   },
   "dependencies": {
     "c3": "^0.4.10"
