@@ -2,7 +2,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import C3Chart from 'react-c3js';
+import C3Chart from '../../src/index';
 
 class DataLineChart extends React.Component {
   render() {
