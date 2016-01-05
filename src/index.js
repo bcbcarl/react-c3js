@@ -38,97 +38,77 @@ export default class C3Chart extends React.Component {
     style: React.PropTypes.object
   }
 
-  componentDidMount() {
-    this.mounted = true;
-    this.renderChart();
+  componentWillReceiveProps(newProps) {
+    this.updateChart(newProps);
   }
 
   componentWillUmount() {
-    this.mounted = false;
     this.destroyChart();
   }
 
-  destroyChart() {
-    if (this.chart) {
-      try {
-        this.chart = this.chart.destroy();
-      } catch (err) {
-        throw new Error('Internal C3 error', err);
-      }
-    }
+  componentDidMount() {
+    this.updateChart(this.props);
   }
 
-  renderChart() {
-    if (!this.mounted) {
-      return;
-    }
-
-    if (this.chart) {
-      this.destroyChart();
-    }
-
-    const data = this.props.data;
-    const size = this.props.size || {};
-    const padding = this.props.padding || {};
-    const color = this.props.color || {};
-    const interaction = this.props.interaction || {};
-    const transition = this.props.transition || {};
-    const oninit = this.props.oninit || function () {};
-    const onrendered = this.props.onrendered || function () {};
-    const onmouseover = this.props.onmouseover || function () {};
-    const onmouseout = this.props.onmouseout || function () {};
-    const onresize = this.props.onresize || function () {};
-    const onresized = this.props.onresized || function () {};
-    const axis = this.props.axis || {};
-    const grid = this.props.grid || {};
-    const regions = this.props.regions || [];
-    const legend = this.props.legend || {};
-    const tooltip = this.props.tooltip || {};
-    const subchart = this.props.subchart || {};
-    const zoom = this.props.zoom || {};
-    const point = this.props.point || {};
-    const line = this.props.line || {};
-    const area = this.props.area || {};
-    const bar = this.props.bar || {};
-    const pie = this.props.pie || {};
-    const donut = this.props.donut || {};
-    const gauge = this.props.gauge || {};
-
-    this.chart = require('c3').generate({
-      bindto: findDOMNode(this),
-      data,
-      size,
-      padding,
-      color,
-      interaction,
-      transition,
-      oninit,
-      onrendered,
-      onmouseover,
-      onmouseout,
-      onresize,
-      onresized,
-      axis,
-      grid,
-      regions,
-      legend,
-      tooltip,
-      subchart,
-      zoom,
-      point,
-      line,
-      area,
-      bar,
-      pie,
-      donut,
-      gauge
+  generateChart(mountNode, config) {
+    const c3 = require('c3');
+    this.chart = c3.generate({
+      bindto: mountNode,
+      ...config
     });
   }
 
+  destroyChart() {
+    try {
+      this.chart = this.chart.destroy();
+    } catch (err) {
+      throw new Error('Internal C3 error', err);
+    }
+  }
+
+  updateChart(config) {
+
+    const newConfig = {
+      data: config.data,
+      size: config.size || {},
+      padding: config.padding || {},
+      color: config.color || {},
+      interaction: config.interaction || {},
+      transition: config.transition || {},
+      oninit: config.oninit || function () {},
+      onrendered: config.onrendered || function () {},
+      onmouseover: config.onmouseover || function () {},
+      onmouseout: config.onmouseout || function () {},
+      onresize: config.onresize || function () {},
+      onresized: config.onresized || function () {},
+      axis: config.axis || {},
+      grid: config.grid || {},
+      regions: config.regions || [],
+      legend: config.legend || {},
+      tooltip: config.tooltip || {},
+      subchart: config.subchart || {},
+      zoom: config.zoom || {},
+      point: config.point || {},
+      line: config.line || {},
+      area: config.area || {},
+      bar: config.bar || {},
+      pie: config.pie || {},
+      donut: config.donut || {},
+      gauge: config.gauge || {}
+    };
+
+    if (this.chart) {
+      this.chart.unload();
+      this.chart.load(newConfig);
+    }
+    else {
+      this.chart = this.generateChart(findDOMNode(this), newConfig);
+    }
+  }
+
   render() {
-    this.renderChart();
     const className = this.props.className ? ' ' + this.props.className : '';
     const style = this.props.style ? this.props.style : {};
-    return (<div className={className} style={style} />);
+    return <div className={className} style={style} />;
   }
 }
