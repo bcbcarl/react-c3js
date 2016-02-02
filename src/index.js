@@ -52,7 +52,7 @@ export default class C3Chart extends React.Component {
 
   generateChart(mountNode, config) {
     const c3 = require('c3');
-    this.chart = c3.generate({
+    return c3.generate({
       bindto: mountNode,
       ...config
     });
@@ -75,12 +75,12 @@ export default class C3Chart extends React.Component {
       color: config.color || {},
       interaction: config.interaction || {},
       transition: config.transition || {},
-      oninit: config.oninit || function () {},
-      onrendered: config.onrendered || function () {},
-      onmouseover: config.onmouseover || function () {},
-      onmouseout: config.onmouseout || function () {},
-      onresize: config.onresize || function () {},
-      onresized: config.onresized || function () {},
+      oninit: config.oninit || (() => {}),
+      onrendered: config.onrendered || (() => {}),
+      onmouseover: config.onmouseover || (() => {}),
+      onmouseout: config.onmouseout || (() => {}),
+      onresize: config.onresize || (() => {}),
+      onresized: config.onresized || (() => {}),
       axis: config.axis || {},
       grid: config.grid || {},
       regions: config.regions || [],
@@ -98,16 +98,14 @@ export default class C3Chart extends React.Component {
     };
 
     if (this.chart) {
-      this.chart.unload();
-      this.chart.load(newConfig);
+      this.destroyChart();
     }
-    else {
-      this.chart = this.generateChart(findDOMNode(this), newConfig);
-    }
+
+    this.chart = this.generateChart(findDOMNode(this), newConfig);
   }
 
   render() {
-    const className = this.props.className ? ' ' + this.props.className : '';
+    const className = this.props.className ? ` ${this.props.className}` : '';
     const style = this.props.style ? this.props.style : {};
     return <div className={className} style={style} />;
   }
