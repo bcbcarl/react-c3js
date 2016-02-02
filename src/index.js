@@ -5,7 +5,7 @@ import { findDOMNode } from 'react-dom';
 
 export default class C3Chart extends React.Component {
 
-  displayName: 'C3Chart'
+  displayName: 'C3Chart';
 
   propTypes: {
     data: React.PropTypes.object.isRequired,
@@ -36,13 +36,13 @@ export default class C3Chart extends React.Component {
     gauge: React.PropTypes.object,
     className: React.PropTypes.string,
     style: React.PropTypes.object
-  }
+  };
 
   componentWillReceiveProps(newProps) {
     this.updateChart(newProps);
   }
 
-  componentWillUmount() {
+  componentWillUnmount() {
     this.destroyChart();
   }
 
