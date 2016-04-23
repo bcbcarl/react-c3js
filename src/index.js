@@ -5,39 +5,6 @@ import { findDOMNode } from 'react-dom';
 
 export default class C3Chart extends React.Component {
 
-  displayName: 'C3Chart';
-
-  propTypes: {
-    data: React.PropTypes.object.isRequired,
-    size: React.PropTypes.object,
-    padding: React.PropTypes.object,
-    color: React.PropTypes.object,
-    interaction: React.PropTypes.object,
-    transition: React.PropTypes.object,
-    oninit: React.PropTypes.func,
-    onrendered: React.PropTypes.func,
-    onmouseover: React.PropTypes.func,
-    onmouseout: React.PropTypes.func,
-    onresize: React.PropTypes.func,
-    onresized: React.PropTypes.func,
-    axis: React.PropTypes.object,
-    grid: React.PropTypes.object,
-    regions: React.PropTypes.array,
-    legend: React.PropTypes.object,
-    tooltip: React.PropTypes.object,
-    subchart: React.PropTypes.object,
-    zoom: React.PropTypes.object,
-    point: React.PropTypes.object,
-    line: React.PropTypes.object,
-    area: React.PropTypes.object,
-    bar: React.PropTypes.object,
-    pie: React.PropTypes.object,
-    donut: React.PropTypes.object,
-    gauge: React.PropTypes.object,
-    className: React.PropTypes.string,
-    style: React.PropTypes.object
-  };
-
   componentWillReceiveProps(newProps) {
     this.updateChart(newProps);
   }
@@ -51,11 +18,12 @@ export default class C3Chart extends React.Component {
   }
 
   generateChart(mountNode, config) {
+
     const c3 = require('c3');
-    return c3.generate({
-      bindto: mountNode,
-      ...config
-    });
+
+    const newConfig = Object.assign({ bindto: mountNode }, config);
+
+    return c3.generate(newConfig);
   }
 
   destroyChart() {
@@ -110,3 +78,36 @@ export default class C3Chart extends React.Component {
     return <div className={className} style={style} />;
   }
 }
+
+C3Chart.displayName = 'C3Chart';
+
+C3Chart.propTypes = {
+  data: React.PropTypes.object.isRequired,
+  size: React.PropTypes.object,
+  padding: React.PropTypes.object,
+  color: React.PropTypes.object,
+  interaction: React.PropTypes.object,
+  transition: React.PropTypes.object,
+  oninit: React.PropTypes.func,
+  onrendered: React.PropTypes.func,
+  onmouseover: React.PropTypes.func,
+  onmouseout: React.PropTypes.func,
+  onresize: React.PropTypes.func,
+  onresized: React.PropTypes.func,
+  axis: React.PropTypes.object,
+  grid: React.PropTypes.object,
+  regions: React.PropTypes.array,
+  legend: React.PropTypes.object,
+  tooltip: React.PropTypes.object,
+  subchart: React.PropTypes.object,
+  zoom: React.PropTypes.object,
+  point: React.PropTypes.object,
+  line: React.PropTypes.object,
+  area: React.PropTypes.object,
+  bar: React.PropTypes.object,
+  pie: React.PropTypes.object,
+  donut: React.PropTypes.object,
+  gauge: React.PropTypes.object,
+  className: React.PropTypes.string,
+  style: React.PropTypes.object
+};
