@@ -1,5 +1,5 @@
-lib
+/lib/
+/example/dist/
 node_modules
 npm-debug.log
-/example/dist/
 \#*\#
