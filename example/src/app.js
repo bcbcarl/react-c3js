@@ -2,7 +2,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import C3Chart from '../../src/index';
+import C3Chart from '../../lib/index';
 
 class ExampleChart extends React.Component {
 
