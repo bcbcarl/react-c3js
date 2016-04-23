@@ -36,6 +36,8 @@ export default class C3Chart extends React.Component {
 
   updateChart(config) {
 
+    const emptyFunc = () => {};
+
     const newConfig = {
       data: config.data,
       size: config.size || {},
@@ -43,12 +45,12 @@ export default class C3Chart extends React.Component {
       color: config.color || {},
       interaction: config.interaction || {},
       transition: config.transition || {},
-      oninit: config.oninit || (() => {}),
-      onrendered: config.onrendered || (() => {}),
-      onmouseover: config.onmouseover || (() => {}),
-      onmouseout: config.onmouseout || (() => {}),
-      onresize: config.onresize || (() => {}),
-      onresized: config.onresized || (() => {}),
+      oninit: config.oninit || emptyFunc,
+      onrendered: config.onrendered || emptyFunc,
+      onmouseover: config.onmouseover || emptyFunc,
+      onmouseout: config.onmouseout || emptyFunc,
+      onresize: config.onresize || emptyFunc,
+      onresized: config.onresized || emptyFunc,
       axis: config.axis || {},
       grid: config.grid || {},
       regions: config.regions || [],
