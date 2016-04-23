@@ -4,7 +4,6 @@ COPY . /react-c3js
 
 WORKDIR /react-c3js
 RUN npm install && \
-  npm install react react-dom && \
   npm run build
 
 WORKDIR example
