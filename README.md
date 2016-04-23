@@ -55,6 +55,10 @@ ReactDOM.render((
 
 ```
 
+## Contributing
+
+See the [Dockerfile](/Dockerfile).
+
 ## Properties
 
 Check out [C3.js Reference](http://c3js.org/reference.html) for more details.
