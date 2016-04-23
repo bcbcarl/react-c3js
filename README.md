@@ -36,7 +36,7 @@ docker run -p 8000:8000 react-c3js
 
 ## Contributing
 
-See the [Dockerfile](/Dockerfile).
+See the [Dockerfile](https://github.com/bcbcarl/react-c3js/blob/master/Dockerfile).
 
 ## Properties
 
