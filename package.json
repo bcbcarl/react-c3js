@@ -9,6 +9,7 @@
     "src"
   ],
   "scripts": {
+    "clean": "rm -rf lib",
     "build": "mkdir -p lib && babel src/index.js -o lib/index.js"
   },
   "repository": {
