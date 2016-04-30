@@ -14,8 +14,8 @@
   "author": "Carl X. Su <bcbcarl@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "babelify": "^7.2.0",
-    "browserify": "^12.0.2",
-    "http-server": "^0.8.5"
+    "babelify": "^7.3.0",
+    "browserify": "^13.0.0",
+    "http-server": "^0.9.0"
   }
 }
