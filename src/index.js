@@ -40,6 +40,7 @@ export default class C3Chart extends React.Component {
 
     const newConfig = {
       data: config.data,
+      title: config.title || {},
       size: config.size || {},
       padding: config.padding || {},
       color: config.color || {},
@@ -85,6 +86,7 @@ C3Chart.displayName = 'C3Chart';
 
 C3Chart.propTypes = {
   data: React.PropTypes.object.isRequired,
+  title: React.PropTypes.object,
   size: React.PropTypes.object,
   padding: React.PropTypes.object,
   color: React.PropTypes.object,

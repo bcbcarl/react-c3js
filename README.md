@@ -43,6 +43,7 @@ See the [Dockerfile](https://github.com/bcbcarl/react-c3js/blob/master/Dockerfil
 Check out [C3.js Reference](http://c3js.org/reference.html) for more details.
 
 * data
+* title
 * size
 * padding
 * color
