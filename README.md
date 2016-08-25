@@ -4,8 +4,6 @@
 
 React component for [C3.js](http://c3js.org/)
 
-Note: `c3.css` is not included.
-
 ## Installation
 
 ```
@@ -15,6 +13,9 @@ $ npm install --save react-c3js
 ## Usage
 
 ```JavaScript
+import C3Chart from 'react-c3js';
+import 'c3/c3.css';
+
 const data = {
   columns: [
     ['data1', 30, 200, 100, 400, 150, 250],
@@ -22,9 +23,9 @@ const data = {
   ]
 };
 
-ReactDOM.render((
-  <C3Chart data={data} />
-), document.getElementById('react-c3js'));
+const mountNode = document.getElementById('react-c3js');
+
+ReactDOM.render(<C3Chart data={data} />, mountNode);
 ```
 
 You can also see the example using [Docker](https://www.docker.com/):
