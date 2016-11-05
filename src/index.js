@@ -32,6 +32,11 @@ export default class C3Chart extends React.Component {
     }
   }
 
+  loadNewData(data) {
+    /*Load new data to the chart*/
+      this.chart.load(data);
+  }
+
   updateChart(config) {
 
     const emptyFunc = () => {};
