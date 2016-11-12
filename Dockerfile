@@ -1,4 +1,4 @@
-FROM node:5
+FROM node:7
 
 COPY . /react-c3js
 
