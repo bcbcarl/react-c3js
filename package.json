@@ -9,9 +9,8 @@
     "src"
   ],
   "scripts": {
-    "clean": "rm -rf lib",
-    "build": "npm run clean && mkdir -p lib && babel src/index.js -o lib/index.js",
-    "prepublish": "npm run build"
+    "clean": "make clean",
+    "build": "make build"
   },
   "repository": {
     "type": "git",
