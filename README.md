@@ -28,17 +28,15 @@ const mountNode = document.getElementById('react-c3js');
 ReactDOM.render(<C3Chart data={data} />, mountNode);
 ```
 
-You can also see the example using [Docker](https://www.docker.com/):
+You can also see the example under the `/docs` directory.
+
+## Contributing
 
 ```bash
 docker build -t react-c3js .
 docker run --rm -p 9966:9966 --name react-c3js react-c3js
 docker stop react-c3js
 ```
-
-## Contributing
-
-See the [Dockerfile](https://github.com/bcbcarl/react-c3js/blob/master/Dockerfile).
 
 ## Properties
 

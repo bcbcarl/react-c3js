@@ -5,7 +5,7 @@ COPY . /react-c3js
 WORKDIR /react-c3js
 RUN make build
 
-WORKDIR example
+WORKDIR docs
 RUN rm -rf node_modules && \
   yarn
 
