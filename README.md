@@ -2,7 +2,9 @@
 
 [![NPM version][npm-image]][npm-url]
 
-React component for [C3.js](http://c3js.org/)
+React component for [C3.js](http://c3js.org/). ([Demo])
+
+[Demo]: http://bcbcarl.github.io/react-c3js/
 
 ## Installation
 
