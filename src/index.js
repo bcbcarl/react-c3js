@@ -1,7 +1,49 @@
 import React from 'react';
 import { findDOMNode } from 'react-dom';
+import c3 from 'c3';
 
-export default class C3Chart extends React.Component {
+class C3Chart extends React.Component {
+  static get displayName() {
+    return 'C3Chart';
+  }
+
+  static get propTypes() {
+    return {
+      data: React.PropTypes.object.isRequired,
+      title: React.PropTypes.object,
+      size: React.PropTypes.object,
+      padding: React.PropTypes.object,
+      color: React.PropTypes.object,
+      interaction: React.PropTypes.object,
+      transition: React.PropTypes.object,
+      oninit: React.PropTypes.func,
+      onrendered: React.PropTypes.func,
+      onmouseover: React.PropTypes.func,
+      onmouseout: React.PropTypes.func,
+      onresize: React.PropTypes.func,
+      onresized: React.PropTypes.func,
+      axis: React.PropTypes.object,
+      grid: React.PropTypes.object,
+      regions: React.PropTypes.array,
+      legend: React.PropTypes.object,
+      tooltip: React.PropTypes.object,
+      subchart: React.PropTypes.object,
+      zoom: React.PropTypes.object,
+      point: React.PropTypes.object,
+      line: React.PropTypes.object,
+      area: React.PropTypes.object,
+      bar: React.PropTypes.object,
+      pie: React.PropTypes.object,
+      donut: React.PropTypes.object,
+      gauge: React.PropTypes.object,
+      className: React.PropTypes.string,
+      style: React.PropTypes.object
+    };
+  }
+
+  componentDidMount() {
+    this.updateChart(this.props);
+  }
 
   componentWillReceiveProps(newProps) {
     this.updateChart(newProps);
@@ -11,34 +53,17 @@ export default class C3Chart extends React.Component {
     this.destroyChart();
   }
 
-  componentDidMount() {
-    this.updateChart(this.props);
-  }
-
   generateChart(mountNode, config) {
-
-    const c3 = require('c3');
-
     const newConfig = Object.assign({ bindto: mountNode }, config);
-
     return c3.generate(newConfig);
   }
 
-  destroyChart() {
-    try {
-      this.chart = this.chart.destroy();
-    } catch (err) {
-      throw new Error('Internal C3 error', err);
-    }
-  }
-
   loadNewData(data) {
-    /*Load new data to the chart*/
-      this.chart.load(data);
+    /* Load new data to the chart */
+    this.chart.load(data);
   }
 
   updateChart(config) {
-
     const emptyFunc = () => {};
 
     const newConfig = {
@@ -78,6 +103,14 @@ export default class C3Chart extends React.Component {
     this.chart = this.generateChart(findDOMNode(this), newConfig);
   }
 
+  destroyChart() {
+    try {
+      this.chart = this.chart.destroy();
+    } catch (err) {
+      throw new Error('Internal C3 error', err);
+    }
+  }
+
   render() {
     const className = this.props.className ? ` ${this.props.className}` : '';
     const style = this.props.style ? this.props.style : {};
@@ -85,36 +118,4 @@ export default class C3Chart extends React.Component {
   }
 }
 
-C3Chart.displayName = 'C3Chart';
-
-C3Chart.propTypes = {
-  data: React.PropTypes.object.isRequired,
-  title: React.PropTypes.object,
-  size: React.PropTypes.object,
-  padding: React.PropTypes.object,
-  color: React.PropTypes.object,
-  interaction: React.PropTypes.object,
-  transition: React.PropTypes.object,
-  oninit: React.PropTypes.func,
-  onrendered: React.PropTypes.func,
-  onmouseover: React.PropTypes.func,
-  onmouseout: React.PropTypes.func,
-  onresize: React.PropTypes.func,
-  onresized: React.PropTypes.func,
-  axis: React.PropTypes.object,
-  grid: React.PropTypes.object,
-  regions: React.PropTypes.array,
-  legend: React.PropTypes.object,
-  tooltip: React.PropTypes.object,
-  subchart: React.PropTypes.object,
-  zoom: React.PropTypes.object,
-  point: React.PropTypes.object,
-  line: React.PropTypes.object,
-  area: React.PropTypes.object,
-  bar: React.PropTypes.object,
-  pie: React.PropTypes.object,
-  donut: React.PropTypes.object,
-  gauge: React.PropTypes.object,
-  className: React.PropTypes.string,
-  style: React.PropTypes.object
-};
+export default C3Chart;
