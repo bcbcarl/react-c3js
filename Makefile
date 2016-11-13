@@ -38,7 +38,7 @@ install: package.json
 build: $(SRC_FILE) clean install
 	@echo $(INFO)
 	@$(MKDIR) $(LIB_DIR)
-	@$(BABEL) $(SRC_FILE) -o $(LIB_FILE)
+	@NODE_ENV=production $(BABEL) $(SRC_FILE) -o $(LIB_FILE)
 
 .PHONY: dist
 dist: package.json
