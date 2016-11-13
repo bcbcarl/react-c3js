@@ -13,7 +13,8 @@ const enhance = compose(
   setPropTypes({
     data: PropTypes.object.isRequired
   }),
-  onlyUpdateForKeys(['data']));
+  onlyUpdateForKeys(['data'])
+);
 
 const LineChart = enhance(({ data }) =>
   <C3Chart data={{ json: data }} />
