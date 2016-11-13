@@ -27,10 +27,7 @@ const chartData = {
 
 ReactDOM.render(
   <div>
-    <h1>react-c3js</h1>
-    <h2>Line Chart</h2>
     <LineChart data={chartData.line} />
-    <h2>Bar Chart</h2>
     <BarChart data={chartData.bar} />
   </div>, document.getElementById('react-c3js')
 );
