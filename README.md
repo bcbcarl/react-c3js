@@ -32,7 +32,8 @@ You can also see the example using [Docker](https://www.docker.com/):
 
 ```bash
 docker build -t react-c3js .
-docker run -p 8000:8000 react-c3js
+docker run --rm -p 9966:9966 --name react-c3js react-c3js
+docker stop react-c3js
 ```
 
 ## Contributing

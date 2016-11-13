@@ -7,8 +7,7 @@ RUN make build
 
 WORKDIR example
 RUN rm -rf node_modules && \
-  yarn && \
-  npm run build
+  yarn
 
-EXPOSE 8000
-CMD npm run serve
+EXPOSE 9966
+CMD npm start
