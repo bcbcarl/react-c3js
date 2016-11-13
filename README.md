@@ -4,17 +4,7 @@
 
 React component for [C3.js](http://c3js.org/). ([Demo])
 
-[Demo]: http://bcbcarl.github.io/react-c3js/
-
-## Installation
-
-```
-$ npm install --save react-c3js
-```
-
-## Usage
-
-```JavaScript
+```javascript
 import C3Chart from 'react-c3js';
 import 'c3/c3.css';
 
@@ -30,7 +20,15 @@ const mountNode = document.getElementById('react-c3js');
 ReactDOM.render(<C3Chart data={data} />, mountNode);
 ```
 
-You can also see the example under the `/docs` directory.
+You can see the `docs` for more details.
+
+[Demo]: http://bcbcarl.github.io/react-c3js/
+
+## Installation
+
+```
+$ npm install --save react-c3js
+```
 
 ## Contributing
 
