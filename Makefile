@@ -10,9 +10,8 @@ BIN_DIR := $(MODULES_DIR)/.bin
 BABEL := $(BIN_DIR)/babel
 
 SRC_DIR := src
-LIB_DIR := lib
 SRC_FILE := $(SRC_DIR)/index.js
-LIB_FILE := $(LIB_DIR)/index.js
+LIB_FILE := react-c3js.js
 
 INFO = "\\033[34m[+] $@\\033[0m"
 
@@ -22,7 +21,7 @@ all: build
 .PHONY: clean
 clean:
 	@echo $(INFO)
-	@$(RM) $(LIB_DIR)
+	@$(RM) $(LIB_FILE)
 
 .PHONY: distclean
 distclean: clean
@@ -37,7 +36,6 @@ install: package.json
 .PHONY: build
 build: $(SRC_FILE) clean install
 	@echo $(INFO)
-	@$(MKDIR) $(LIB_DIR)
 	@NODE_ENV=production $(BABEL) $(SRC_FILE) -o $(LIB_FILE)
 
 .PHONY: dist

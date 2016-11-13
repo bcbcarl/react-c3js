@@ -1,6 +1,6 @@
 {
   "name": "hello-c3js",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "An example for react-c3js",
   "main": "app.js",
   "scripts": {
