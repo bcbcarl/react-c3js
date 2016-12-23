@@ -57,49 +57,15 @@ var C3Chart = function (_React$Component) {
   }, {
     key: 'loadNewData',
     value: function loadNewData(data) {
-      /* Load new data to the chart */
       this.chart.load(data);
     }
   }, {
     key: 'updateChart',
     value: function updateChart(config) {
-      var emptyFunc = function emptyFunc() {};
-
-      var newConfig = {
-        data: config.data,
-        title: config.title || {},
-        size: config.size || {},
-        padding: config.padding || {},
-        color: config.color || {},
-        interaction: config.interaction || {},
-        transition: config.transition || {},
-        oninit: config.oninit || emptyFunc,
-        onrendered: config.onrendered || emptyFunc,
-        onmouseover: config.onmouseover || emptyFunc,
-        onmouseout: config.onmouseout || emptyFunc,
-        onresize: config.onresize || emptyFunc,
-        onresized: config.onresized || emptyFunc,
-        axis: config.axis || {},
-        grid: config.grid || {},
-        regions: config.regions || [],
-        legend: config.legend || {},
-        tooltip: config.tooltip || {},
-        subchart: config.subchart || {},
-        zoom: config.zoom || {},
-        point: config.point || {},
-        line: config.line || {},
-        area: config.area || {},
-        bar: config.bar || {},
-        pie: config.pie || {},
-        donut: config.donut || {},
-        gauge: config.gauge || {}
-      };
-
-      if (this.chart) {
-        this.destroyChart();
+      if (!this.chart) {
+        this.chart = this.generateChart((0, _reactDom.findDOMNode)(this), config);
       }
-
-      this.chart = this.generateChart((0, _reactDom.findDOMNode)(this), newConfig);
+      this.loadNewData(config.data);
     }
   }, {
     key: 'destroyChart',
