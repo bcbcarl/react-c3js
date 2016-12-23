@@ -59,48 +59,14 @@ class C3Chart extends React.Component {
   }
 
   loadNewData(data) {
-    /* Load new data to the chart */
     this.chart.load(data);
   }
 
   updateChart(config) {
-    const emptyFunc = () => {};
-
-    const newConfig = {
-      data: config.data,
-      title: config.title || {},
-      size: config.size || {},
-      padding: config.padding || {},
-      color: config.color || {},
-      interaction: config.interaction || {},
-      transition: config.transition || {},
-      oninit: config.oninit || emptyFunc,
-      onrendered: config.onrendered || emptyFunc,
-      onmouseover: config.onmouseover || emptyFunc,
-      onmouseout: config.onmouseout || emptyFunc,
-      onresize: config.onresize || emptyFunc,
-      onresized: config.onresized || emptyFunc,
-      axis: config.axis || {},
-      grid: config.grid || {},
-      regions: config.regions || [],
-      legend: config.legend || {},
-      tooltip: config.tooltip || {},
-      subchart: config.subchart || {},
-      zoom: config.zoom || {},
-      point: config.point || {},
-      line: config.line || {},
-      area: config.area || {},
-      bar: config.bar || {},
-      pie: config.pie || {},
-      donut: config.donut || {},
-      gauge: config.gauge || {}
-    };
-
-    if (this.chart) {
-      this.destroyChart();
+    if (!this.chart) {
+      this.chart = this.generateChart(findDOMNode(this), config);
     }
-
-    this.chart = this.generateChart(findDOMNode(this), newConfig);
+    this.loadNewData(config.data);
   }
 
   destroyChart() {
@@ -112,8 +78,12 @@ class C3Chart extends React.Component {
   }
 
   render() {
-    const className = this.props.className ? ` ${this.props.className}` : '';
-    const style = this.props.style ? this.props.style : {};
+    const className = this.props.className
+      ? ` ${this.props.className}`
+      : '';
+    const style = this.props.style
+      ? this.props.style
+      : {};
     return <div className={className} style={style} />;
   }
 }
