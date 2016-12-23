@@ -34,6 +34,15 @@ $ npm install --save react-c3js
 
 ## Contributing
 
+### Yarn / NPM
+
+1. Modify `src/index.js`.
+2. Build the lib by using `npm run build` or `make build`.
+3. Import C3Chart from react-c3js.
+4. See the result.
+
+### Docker
+
 ```bash
 docker build -t react-c3js .
 docker run --rm -p 9966:9966 --name react-c3js react-c3js
