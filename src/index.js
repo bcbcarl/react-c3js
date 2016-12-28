@@ -1,6 +1,6 @@
 import React from 'react';
 import { findDOMNode } from 'react-dom';
-import c3 from 'c3';
+let c3;
 
 class C3Chart extends React.Component {
   static get displayName() {
@@ -42,6 +42,7 @@ class C3Chart extends React.Component {
   }
 
   componentDidMount() {
+    c3 = require('c3');
     this.updateChart(this.props);
   }
 
