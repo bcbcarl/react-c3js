@@ -59,11 +59,21 @@ var C3Chart = function (_React$Component) {
       this.chart.load(data);
     }
   }, {
+    key: 'unloadData',
+    value: function unloadData() {
+      this.chart.unload();
+    }
+  }, {
     key: 'updateChart',
     value: function updateChart(config) {
       if (!this.chart) {
         this.chart = this.generateChart((0, _reactDom.findDOMNode)(this), config);
       }
+
+      if (config.unloadBeforeLoad) {
+        this.unloadData();
+      }
+
       this.loadNewData(config.data);
     }
   }, {
@@ -119,7 +129,8 @@ var C3Chart = function (_React$Component) {
         donut: _react2.default.PropTypes.object,
         gauge: _react2.default.PropTypes.object,
         className: _react2.default.PropTypes.string,
-        style: _react2.default.PropTypes.object
+        style: _react2.default.PropTypes.object,
+        unloadBeforeLoad: _react2.default.PropTypes.bool
       };
     }
   }]);

@@ -82,6 +82,7 @@ Check out [C3.js Reference](http://c3js.org/reference.html) for more details.
 * gauge
 * className
 * style
+* unloadBeforeLoad
 
 ## License
 

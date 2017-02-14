@@ -37,7 +37,8 @@ class C3Chart extends React.Component {
       donut: React.PropTypes.object,
       gauge: React.PropTypes.object,
       className: React.PropTypes.string,
-      style: React.PropTypes.object
+      style: React.PropTypes.object,
+      unloadBeforeLoad: React.PropTypes.bool,
     };
   }
 
@@ -63,10 +64,19 @@ class C3Chart extends React.Component {
     this.chart.load(data);
   }
 
+  unloadData() {
+      this.chart.unload();
+  }
+
   updateChart(config) {
     if (!this.chart) {
       this.chart = this.generateChart(findDOMNode(this), config);
     }
+
+    if (config.unloadBeforeLoad) {
+        this.unloadData();
+    }
+
     this.loadNewData(config.data);
   }
 
