@@ -38,13 +38,14 @@
     "c3": "^0.4.11"
   },
   "devDependencies": {
-    "@types/c3": "^0.4.37",
-    "@types/react": "^0.14.47",
-    "@types/react-dom": "^0.14.18",
-    "babel-cli": "^6.18.0",
-    "babel-preset-es2015": "^6.18.0",
-    "babel-preset-react": "^6.16.0",
-    "react": "^15.3.2",
-    "react-dom": "^15.3.2"
+    "@types/c3": "^0.4.41",
+    "@types/react": "^15.0.21",
+    "@types/react-dom": "^0.14.23",
+    "babel-cli": "^6.24.0",
+    "babel-plugin-transform-object-assign": "^6.22.0",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-react": "^6.23.0",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
   }
 }
