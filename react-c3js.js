@@ -12,6 +12,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _reactDom = require('react-dom');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -50,6 +54,15 @@ var C3Chart = function (_React$Component) {
       this.destroyChart();
     }
   }, {
+    key: 'destroyChart',
+    value: function destroyChart() {
+      try {
+        this.chart = this.chart.destroy();
+      } catch (err) {
+        throw new Error('Internal C3 error', err);
+      }
+    }
+  }, {
     key: 'generateChart',
     value: function generateChart(mountNode, config) {
       var newConfig = _extends({ bindto: mountNode }, config);
@@ -79,15 +92,6 @@ var C3Chart = function (_React$Component) {
       this.loadNewData(config.data);
     }
   }, {
-    key: 'destroyChart',
-    value: function destroyChart() {
-      try {
-        this.chart = this.chart.destroy();
-      } catch (err) {
-        throw new Error('Internal C3 error', err);
-      }
-    }
-  }, {
     key: 'render',
     value: function render() {
       var className = this.props.className ? ' ' + this.props.className : '';
@@ -103,36 +107,36 @@ var C3Chart = function (_React$Component) {
     key: 'propTypes',
     get: function get() {
       return {
-        data: _react2.default.PropTypes.object.isRequired,
-        title: _react2.default.PropTypes.object,
-        size: _react2.default.PropTypes.object,
-        padding: _react2.default.PropTypes.object,
-        color: _react2.default.PropTypes.object,
-        interaction: _react2.default.PropTypes.object,
-        transition: _react2.default.PropTypes.object,
-        oninit: _react2.default.PropTypes.func,
-        onrendered: _react2.default.PropTypes.func,
-        onmouseover: _react2.default.PropTypes.func,
-        onmouseout: _react2.default.PropTypes.func,
-        onresize: _react2.default.PropTypes.func,
-        onresized: _react2.default.PropTypes.func,
-        axis: _react2.default.PropTypes.object,
-        grid: _react2.default.PropTypes.object,
-        regions: _react2.default.PropTypes.array,
-        legend: _react2.default.PropTypes.object,
-        tooltip: _react2.default.PropTypes.object,
-        subchart: _react2.default.PropTypes.object,
-        zoom: _react2.default.PropTypes.object,
-        point: _react2.default.PropTypes.object,
-        line: _react2.default.PropTypes.object,
-        area: _react2.default.PropTypes.object,
-        bar: _react2.default.PropTypes.object,
-        pie: _react2.default.PropTypes.object,
-        donut: _react2.default.PropTypes.object,
-        gauge: _react2.default.PropTypes.object,
-        className: _react2.default.PropTypes.string,
-        style: _react2.default.PropTypes.object,
-        unloadBeforeLoad: _react2.default.PropTypes.bool
+        data: _propTypes2.default.object.isRequired,
+        title: _propTypes2.default.object,
+        size: _propTypes2.default.object,
+        padding: _propTypes2.default.object,
+        color: _propTypes2.default.object,
+        interaction: _propTypes2.default.object,
+        transition: _propTypes2.default.object,
+        oninit: _propTypes2.default.func,
+        onrendered: _propTypes2.default.func,
+        onmouseover: _propTypes2.default.func,
+        onmouseout: _propTypes2.default.func,
+        onresize: _propTypes2.default.func,
+        onresized: _propTypes2.default.func,
+        axis: _propTypes2.default.object,
+        grid: _propTypes2.default.object,
+        regions: _propTypes2.default.array,
+        legend: _propTypes2.default.object,
+        tooltip: _propTypes2.default.object,
+        subchart: _propTypes2.default.object,
+        zoom: _propTypes2.default.object,
+        point: _propTypes2.default.object,
+        line: _propTypes2.default.object,
+        area: _propTypes2.default.object,
+        bar: _propTypes2.default.object,
+        pie: _propTypes2.default.object,
+        donut: _propTypes2.default.object,
+        gauge: _propTypes2.default.object,
+        className: _propTypes2.default.string,
+        style: _propTypes2.default.object,
+        unloadBeforeLoad: _propTypes2.default.bool
       };
     }
   }]);

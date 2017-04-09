@@ -10,20 +10,21 @@
   "author": "Carl X. Su <bcbcarl@gmail.com>",
   "license": "MIT",
   "peerDependencies": {
-    "react": "^15.0.0",
-    "react-dom": "^15.0.0"
+    "react": "^15.5.0",
+    "react-dom": "^15.5.0"
   },
   "dependencies": {
-    "recompose": "^0.20.2"
+    "recompose": "^0.23.0"
   },
   "devDependencies": {
-    "@types/react": "^0.14.47",
-    "@types/react-dom": "^0.14.18",
-    "@types/recompose": "^0.20.1",
+    "@types/react": "^15.0.21",
+    "@types/react-dom": "^0.14.23",
+    "@types/recompose": "^0.22.0",
     "babelify": "^7.3.0",
-    "browserify": "^13.1.1",
-    "budo": "^9.2.1",
-    "react": "^15.3.2",
-    "react-dom": "^15.3.2"
+    "browserify": "^14.3.0",
+    "budo": "^9.4.7",
+    "prop-types": "^15.5.4",
+    "react": "^15.5.3",
+    "react-dom": "^15.5.3"
   }
 }

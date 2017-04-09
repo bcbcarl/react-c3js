@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { findDOMNode } from 'react-dom';
 let c3;
 
@@ -9,36 +10,36 @@ class C3Chart extends React.Component {
 
   static get propTypes() {
     return {
-      data: React.PropTypes.object.isRequired,
-      title: React.PropTypes.object,
-      size: React.PropTypes.object,
-      padding: React.PropTypes.object,
-      color: React.PropTypes.object,
-      interaction: React.PropTypes.object,
-      transition: React.PropTypes.object,
-      oninit: React.PropTypes.func,
-      onrendered: React.PropTypes.func,
-      onmouseover: React.PropTypes.func,
-      onmouseout: React.PropTypes.func,
-      onresize: React.PropTypes.func,
-      onresized: React.PropTypes.func,
-      axis: React.PropTypes.object,
-      grid: React.PropTypes.object,
-      regions: React.PropTypes.array,
-      legend: React.PropTypes.object,
-      tooltip: React.PropTypes.object,
-      subchart: React.PropTypes.object,
-      zoom: React.PropTypes.object,
-      point: React.PropTypes.object,
-      line: React.PropTypes.object,
-      area: React.PropTypes.object,
-      bar: React.PropTypes.object,
-      pie: React.PropTypes.object,
-      donut: React.PropTypes.object,
-      gauge: React.PropTypes.object,
-      className: React.PropTypes.string,
-      style: React.PropTypes.object,
-      unloadBeforeLoad: React.PropTypes.bool,
+      data: PropTypes.object.isRequired,
+      title: PropTypes.object,
+      size: PropTypes.object,
+      padding: PropTypes.object,
+      color: PropTypes.object,
+      interaction: PropTypes.object,
+      transition: PropTypes.object,
+      oninit: PropTypes.func,
+      onrendered: PropTypes.func,
+      onmouseover: PropTypes.func,
+      onmouseout: PropTypes.func,
+      onresize: PropTypes.func,
+      onresized: PropTypes.func,
+      axis: PropTypes.object,
+      grid: PropTypes.object,
+      regions: PropTypes.array,
+      legend: PropTypes.object,
+      tooltip: PropTypes.object,
+      subchart: PropTypes.object,
+      zoom: PropTypes.object,
+      point: PropTypes.object,
+      line: PropTypes.object,
+      area: PropTypes.object,
+      bar: PropTypes.object,
+      pie: PropTypes.object,
+      donut: PropTypes.object,
+      gauge: PropTypes.object,
+      className: PropTypes.string,
+      style: PropTypes.object,
+      unloadBeforeLoad: PropTypes.bool,
     };
   }
 
@@ -53,6 +54,14 @@ class C3Chart extends React.Component {
 
   componentWillUnmount() {
     this.destroyChart();
+  }
+
+  destroyChart() {
+    try {
+      this.chart = this.chart.destroy();
+    } catch (err) {
+      throw new Error('Internal C3 error', err);
+    }
   }
 
   generateChart(mountNode, config) {
@@ -78,14 +87,6 @@ class C3Chart extends React.Component {
     }
 
     this.loadNewData(config.data);
-  }
-
-  destroyChart() {
-    try {
-      this.chart = this.chart.destroy();
-    } catch (err) {
-      throw new Error('Internal C3 error', err);
-    }
   }
 
   render() {
