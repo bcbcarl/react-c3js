@@ -1,14 +1,12 @@
-# react-c3js
+# react-billboard.js
 
-[![NPM version][npm-image]][npm-url]
+## This is a fork of [react-c3js](https://github.com/bcbcarl/react-c3js) adopted for [billboard.js](https://naver.github.io/billboard.js/)
 
-React component for [C3.js](http://c3js.org/). ([Demo])
-
-![screenshot](screenshot.png)
+React component for [billboard.js](https://naver.github.io/billboard.js/)
 
 ```javascript
-import C3Chart from 'react-c3js';
-import 'c3/c3.css';
+import BillboardChart from 'react-billboard.js';
+import 'billboard/billboard.css';
 
 const data = {
   columns: [
@@ -17,41 +15,33 @@ const data = {
   ]
 };
 
-const mountNode = document.getElementById('react-c3js');
+const mountNode = document.getElementById('react-billboardjs');
 
-ReactDOM.render(<C3Chart data={data} />, mountNode);
+ReactDOM.render(<BillboardChart data={data} />, mountNode);
 ```
 
 You can see the `docs` for more details.
 
-[Demo]: http://bcbcarl.github.io/react-c3js/
+[Demo]: http://my8bit.github.io/react-billboardjs/
 
 ## Installation
 
 ```
-$ npm install --save react-c3js
+$ npm install --save react-billboard.js
 ```
 
 ## Contributing
 
-### Yarn / NPM
+### NPM
 
 1. Modify `src/index.js`.
-2. Build the lib by using `npm run build` or `make build`.
-3. Import C3Chart from react-c3js.
-4. See the result.
-
-### Docker
-
-```bash
-docker build -t react-c3js .
-docker run --rm -p 9966:9966 --name react-c3js react-c3js
-docker stop react-c3js
-```
+2. Build the lib by using `npm run build`
+3. Import BillboardChart from react-billboard.js.
+4. Enjoy the result.
 
 ## Properties
 
-Check out [C3.js Reference](http://c3js.org/reference.html) for more details.
+Check out [billboard.js Reference](https://naver.github.io/billboard.js/release/latest/doc/) for more details.
 
 * data
 * title
@@ -87,6 +77,3 @@ Check out [C3.js Reference](http://c3js.org/reference.html) for more details.
 ## License
 
 MIT
-
-[npm-image]: https://img.shields.io/npm/v/react-c3js.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/react-c3js

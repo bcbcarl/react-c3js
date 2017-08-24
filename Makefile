@@ -11,7 +11,7 @@ BABEL := $(BIN_DIR)/babel
 
 SRC_DIR := src
 SRC_FILE := $(SRC_DIR)/index.js
-LIB_FILE := react-c3js.js
+LIB_FILE := react-billboard.js
 
 INFO = "\\033[34m[+] $@\\033[0m"
 
