@@ -50,7 +50,6 @@ class BillboardChart extends React.Component {
 
   componentWillReceiveProps(newProps) {
     this.updateChart(newProps);
-    console.log(1+2);
   }
 
   componentWillUnmount() {
