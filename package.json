@@ -6,7 +6,7 @@
   "files": [
     "*.md",
     "src",
-    "react-c3js.js"
+    "react-billboard.js"
   ],
   "scripts": {
     "clean": "make clean",
@@ -14,22 +14,26 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/bcbcarl/react-c3js.git"
+    "url": "https://github.com/my8bit/react-billboard.js"
   },
   "keywords": [
     "react",
     "react-component",
     "component",
-    "c3",
+    "billboard.js",
     "chart",
     "graph"
   ],
-  "author": "Carl X. Su <bcbcarl@gmail.com>",
+  "author": "my8bit <mail@my8bit.name> (http://my8bit.name)",
+  "contributors": [
+    "name": "Carl X. Su",
+    "email": "bcbcarl@gmail.com"
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bcbcarl/react-c3js/issues"
+    "url": "https://github.com/my8bit/react-billboard.js/issues"
   },
-  "homepage": "https://github.com/bcbcarl/react-c3js#readme",
+  "homepage": "https://github.com/my8bit/react-billboard.js#readme",
   "peerDependencies": {
     "prop-types": "^15.5.0",
     "react": "^15.5.0",
