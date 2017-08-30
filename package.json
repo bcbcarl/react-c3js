@@ -25,10 +25,10 @@
     "graph"
   ],
   "author": "my8bit <mail@my8bit.name> (http://my8bit.name)",
-  "contributors": [
+  "contributors": [{
     "name": "Carl X. Su",
     "email": "bcbcarl@gmail.com"
-  ],
+  }],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/my8bit/react-billboard.js/issues"
