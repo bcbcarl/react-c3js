@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "build": "browserify src/index.js -o app.js -t babelify",
-    "start": "budo src/index.js:app.js --live -- -t babelify"
+    "start": "budo src/index.js:app.js --live --host=$IP --port=$PORT -- -t babelify"
   },
   "author": "Carl X. Su <bcbcarl@gmail.com>",
   "license": "MIT",

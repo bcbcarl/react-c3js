@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { findDOMNode } from 'react-dom';
-let c3;
+let billboard;
 
-class C3Chart extends React.Component {
+class BillboardChart extends React.Component {
   static get displayName() {
-    return 'C3Chart';
+    return 'BillboardChart';
   }
 
   static get propTypes() {
@@ -44,7 +44,7 @@ class C3Chart extends React.Component {
   }
 
   componentDidMount() {
-    c3 = require('c3');
+    billboard = require('billboard.js').bb;
     this.updateChart(this.props);
   }
 
@@ -66,7 +66,7 @@ class C3Chart extends React.Component {
 
   generateChart(mountNode, config) {
     const newConfig = Object.assign({ bindto: mountNode }, config);
-    return c3.generate(newConfig);
+    return billboard.generate(newConfig);
   }
 
   loadNewData(data) {
@@ -100,4 +100,4 @@ class C3Chart extends React.Component {
   }
 }
 
-export default C3Chart;
+export default BillboardChart;

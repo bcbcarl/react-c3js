@@ -1,4 +1,4 @@
-import C3Chart from '../../../react-c3js';
+import BillboardChart from '../../../react-billboard.js';
 
-export { C3Chart };
-export default C3Chart;
+export { BillboardChart };
+export default BillboardChart;
