@@ -6,6 +6,7 @@ This is an example which demonstrates both a line chart and a bar chart:
 import React from 'react';
 import ReactDOM from 'react-dom';
 import C3Chart from 'react-c3js';
+import 'c3/c3.css';
 
 const LineChart = ({ data }) =>
   <C3Chart data={{ json: data }} />;
