@@ -1,46 +1,45 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { findDOMNode } from 'react-dom';
+import ReactDOMServer from 'react-dom/server';
 let c3;
 
 class C3Chart extends React.Component {
-  static get displayName() {
-    return 'C3Chart';
-  }
+  static displayName = 'C3Chart'
 
-  static get propTypes() {
-    return {
-      data: PropTypes.object.isRequired,
-      title: PropTypes.object,
-      size: PropTypes.object,
-      padding: PropTypes.object,
-      color: PropTypes.object,
-      interaction: PropTypes.object,
-      transition: PropTypes.object,
-      oninit: PropTypes.func,
-      onrendered: PropTypes.func,
-      onmouseover: PropTypes.func,
-      onmouseout: PropTypes.func,
-      onresize: PropTypes.func,
-      onresized: PropTypes.func,
-      axis: PropTypes.object,
-      grid: PropTypes.object,
-      regions: PropTypes.array,
-      legend: PropTypes.object,
-      tooltip: PropTypes.object,
-      subchart: PropTypes.object,
-      zoom: PropTypes.object,
-      point: PropTypes.object,
-      line: PropTypes.object,
-      area: PropTypes.object,
-      bar: PropTypes.object,
-      pie: PropTypes.object,
-      donut: PropTypes.object,
-      gauge: PropTypes.object,
-      className: PropTypes.string,
-      style: PropTypes.object,
-      unloadBeforeLoad: PropTypes.bool,
-    };
+  static propTypes = {
+    data: PropTypes.object.isRequired,
+    size: PropTypes.object,
+    padding: PropTypes.object,
+    resize: PropTypes.object,
+    color: PropTypes.object,
+    interaction: PropTypes.object,
+    transition: PropTypes.object,
+    oninit: PropTypes.func,
+    onrendered: PropTypes.func,
+    onmouseover: PropTypes.func,
+    onmouseout: PropTypes.func,
+    onresize: PropTypes.func,
+    onresized: PropTypes.func,
+    axis: PropTypes.object,
+    grid: PropTypes.object,
+    regions: PropTypes.array,
+    legend: PropTypes.object,
+    tooltip: PropTypes.object,
+    subchart: PropTypes.object,
+    zoom: PropTypes.object,
+    point: PropTypes.object,
+    line: PropTypes.object,
+    area: PropTypes.object,
+    bar: PropTypes.object,
+    pie: PropTypes.object,
+    donut: PropTypes.object,
+    gauge: PropTypes.object,
+    spline: PropTypes.object,
+    className: PropTypes.string,
+    style: PropTypes.object,
+    unloadBeforeLoad: PropTypes.bool,
+    tooltipComponent: PropTypes.element
   }
 
   componentDidMount() {
@@ -78,15 +77,36 @@ class C3Chart extends React.Component {
   }
 
   updateChart(config) {
-    if (!this.chart) {
-      this.chart = this.generateChart(findDOMNode(this), config);
+    let localConfig = config;
+    let lastUsedIndex;
+    let lastUsedMarkup;
+    if (localConfig.tooltipComponent) {
+      localConfig = Object.assign(
+        {
+          tooltip: {
+            contents: function(data, defaultTitleFormat, defaultValueFormat, color) {
+              if (lastUsedIndex && lastUsedMarkup && data[0].index == lastUsedIndex)
+                return lastUsedMarkup;
+                
+              const additionalProps = { data, defaultTitleFormat, defaultValueFormat, color };
+              const compontntWithInjectedProps = React.cloneElement(localConfig.tooltipComponent, additionalProps);
+              lastUsedMarkup = ReactDOMServer.renderToStaticMarkup(compontntWithInjectedProps);
+              lastUsedIndex = data[0].index;
+              return lastUsedMarkup;
+            }
+          }
+        }, config);
     }
 
-    if (config.unloadBeforeLoad) {
+    if (!this.chart) {
+      this.chart = this.generateChart(findDOMNode(this), localConfig);
+    }
+
+    if (localConfig.unloadBeforeLoad) {
         this.unloadData();
     }
 
-    this.loadNewData(config.data);
+    this.loadNewData(localConfig.data);
   }
 
   render() {

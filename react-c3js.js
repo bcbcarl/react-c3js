@@ -18,6 +18,10 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _reactDom = require('react-dom');
 
+var _server = require('react-dom/server');
+
+var _server2 = _interopRequireDefault(_server);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -81,15 +85,34 @@ var C3Chart = function (_React$Component) {
   }, {
     key: 'updateChart',
     value: function updateChart(config) {
-      if (!this.chart) {
-        this.chart = this.generateChart((0, _reactDom.findDOMNode)(this), config);
+      var localConfig = config;
+      var lastUsedIndex = void 0;
+      var lastUsedMarkup = void 0;
+      if (localConfig.tooltipComponent) {
+        localConfig = _extends({
+          tooltip: {
+            contents: function contents(data, defaultTitleFormat, defaultValueFormat, color) {
+              if (lastUsedIndex && lastUsedMarkup && data[0].index == lastUsedIndex) return lastUsedMarkup;
+
+              var additionalProps = { data: data, defaultTitleFormat: defaultTitleFormat, defaultValueFormat: defaultValueFormat, color: color };
+              var compontntWithInjectedProps = _react2.default.cloneElement(localConfig.tooltipComponent, additionalProps);
+              lastUsedMarkup = _server2.default.renderToStaticMarkup(compontntWithInjectedProps);
+              lastUsedIndex = data[0].index;
+              return lastUsedMarkup;
+            }
+          }
+        }, config);
       }
 
-      if (config.unloadBeforeLoad) {
+      if (!this.chart) {
+        this.chart = this.generateChart((0, _reactDom.findDOMNode)(this), localConfig);
+      }
+
+      if (localConfig.unloadBeforeLoad) {
         this.unloadData();
       }
 
-      this.loadNewData(config.data);
+      this.loadNewData(localConfig.data);
     }
   }, {
     key: 'render',
@@ -98,50 +121,44 @@ var C3Chart = function (_React$Component) {
       var style = this.props.style ? this.props.style : {};
       return _react2.default.createElement('div', { className: className, style: style });
     }
-  }], [{
-    key: 'displayName',
-    get: function get() {
-      return 'C3Chart';
-    }
-  }, {
-    key: 'propTypes',
-    get: function get() {
-      return {
-        data: _propTypes2.default.object.isRequired,
-        title: _propTypes2.default.object,
-        size: _propTypes2.default.object,
-        padding: _propTypes2.default.object,
-        color: _propTypes2.default.object,
-        interaction: _propTypes2.default.object,
-        transition: _propTypes2.default.object,
-        oninit: _propTypes2.default.func,
-        onrendered: _propTypes2.default.func,
-        onmouseover: _propTypes2.default.func,
-        onmouseout: _propTypes2.default.func,
-        onresize: _propTypes2.default.func,
-        onresized: _propTypes2.default.func,
-        axis: _propTypes2.default.object,
-        grid: _propTypes2.default.object,
-        regions: _propTypes2.default.array,
-        legend: _propTypes2.default.object,
-        tooltip: _propTypes2.default.object,
-        subchart: _propTypes2.default.object,
-        zoom: _propTypes2.default.object,
-        point: _propTypes2.default.object,
-        line: _propTypes2.default.object,
-        area: _propTypes2.default.object,
-        bar: _propTypes2.default.object,
-        pie: _propTypes2.default.object,
-        donut: _propTypes2.default.object,
-        gauge: _propTypes2.default.object,
-        className: _propTypes2.default.string,
-        style: _propTypes2.default.object,
-        unloadBeforeLoad: _propTypes2.default.bool
-      };
-    }
   }]);
 
   return C3Chart;
 }(_react2.default.Component);
 
+C3Chart.displayName = 'C3Chart';
+C3Chart.propTypes = {
+  data: _propTypes2.default.object.isRequired,
+  size: _propTypes2.default.object,
+  padding: _propTypes2.default.object,
+  resize: _propTypes2.default.object,
+  color: _propTypes2.default.object,
+  interaction: _propTypes2.default.object,
+  transition: _propTypes2.default.object,
+  oninit: _propTypes2.default.func,
+  onrendered: _propTypes2.default.func,
+  onmouseover: _propTypes2.default.func,
+  onmouseout: _propTypes2.default.func,
+  onresize: _propTypes2.default.func,
+  onresized: _propTypes2.default.func,
+  axis: _propTypes2.default.object,
+  grid: _propTypes2.default.object,
+  regions: _propTypes2.default.array,
+  legend: _propTypes2.default.object,
+  tooltip: _propTypes2.default.object,
+  subchart: _propTypes2.default.object,
+  zoom: _propTypes2.default.object,
+  point: _propTypes2.default.object,
+  line: _propTypes2.default.object,
+  area: _propTypes2.default.object,
+  bar: _propTypes2.default.object,
+  pie: _propTypes2.default.object,
+  donut: _propTypes2.default.object,
+  gauge: _propTypes2.default.object,
+  spline: _propTypes2.default.object,
+  className: _propTypes2.default.string,
+  style: _propTypes2.default.object,
+  unloadBeforeLoad: _propTypes2.default.bool,
+  tooltipComponent: _propTypes2.default.element
+};
 exports.default = C3Chart;
