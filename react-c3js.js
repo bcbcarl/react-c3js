@@ -47,6 +47,9 @@ var C3Chart = function (_React$Component) {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(newProps) {
       this.updateChart(newProps);
+      if (newProps.onPropsChanged) {
+        newProps.onPropsChanged(this.props, newProps, this.chart);
+      }
     }
   }, {
     key: 'componentWillUnmount',
@@ -136,7 +139,8 @@ var C3Chart = function (_React$Component) {
         gauge: _propTypes2.default.object,
         className: _propTypes2.default.string,
         style: _propTypes2.default.object,
-        unloadBeforeLoad: _propTypes2.default.bool
+        unloadBeforeLoad: _propTypes2.default.bool,
+        onPropsChanged: _propTypes2.default.func
       };
     }
   }]);

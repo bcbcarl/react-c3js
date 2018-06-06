@@ -40,6 +40,7 @@ class C3Chart extends React.Component {
       className: PropTypes.string,
       style: PropTypes.object,
       unloadBeforeLoad: PropTypes.bool,
+      onPropsChanged: PropTypes.func,
     };
   }
 
@@ -50,6 +51,9 @@ class C3Chart extends React.Component {
 
   componentWillReceiveProps(newProps) {
     this.updateChart(newProps);
+    if (newProps.onPropsChanged) {
+      newProps.onPropsChanged(this.props, newProps, this.chart);
+    }
   }
 
   componentWillUnmount() {
