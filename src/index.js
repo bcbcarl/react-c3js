@@ -74,7 +74,9 @@ class C3Chart extends React.Component {
   }
 
   loadNewData(data) {
-    this.chart.load(data);
+    if (data && data.type !== 'donut') {
+        this.chart.load(data);
+      }
   }
 
   unloadData() {
