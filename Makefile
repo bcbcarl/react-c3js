@@ -45,7 +45,7 @@ dist: package.json
 	@$(GIT) push origin
 	@$(GIT) push origin --tags
 
-.PHONY: publish
-publish: $(LIB_FILE) dist
-	@echo $(INFO)
-	@$(NPM) publish
+#.PHONY: publish
+#publish: $(LIB_FILE) dist
+#	@echo $(INFO)
+#	@$(NPM) publish

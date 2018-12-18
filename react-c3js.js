@@ -74,7 +74,9 @@ var C3Chart = function (_React$Component) {
   }, {
     key: 'loadNewData',
     value: function loadNewData(data) {
-      this.chart.load(data);
+      if (data && data.type !== 'donut') {
+        this.chart.load(data);
+      }
     }
   }, {
     key: 'unloadData',
