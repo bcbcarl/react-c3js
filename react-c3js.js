@@ -78,8 +78,14 @@ var C3Chart = function (_React$Component) {
     }
   }, {
     key: 'unloadData',
-    value: function unloadData() {
-      this.chart.unload();
+    value: function unloadData(data) {
+      var _this2 = this;
+
+      this.chart.unload({
+        done: function done() {
+          return _this2.loadNewData(data);
+        }
+      });
     }
   }, {
     key: 'updateChart',
@@ -89,10 +95,10 @@ var C3Chart = function (_React$Component) {
       }
 
       if (config.unloadBeforeLoad) {
-        this.unloadData();
+        this.unloadData(config.data);
+      } else {
+        this.loadNewData(config.data);
       }
-
-      this.loadNewData(config.data);
     }
   }, {
     key: 'render',
