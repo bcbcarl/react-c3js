@@ -36,7 +36,7 @@
     "react-dom": "^15.5.0 || ^16.0.0"
   },
   "dependencies": {
-    "c3": "^0.4.11"
+    "c3": "^0.7.12"
   },
   "devDependencies": {
     "@types/c3": "^0.4.41",
