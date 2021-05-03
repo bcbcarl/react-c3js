@@ -77,6 +77,11 @@ var C3Chart = function (_React$Component) {
       this.chart.load(data);
     }
   }, {
+    key: 'updateGroups',
+    value: function updateGroups(groups) {
+      this.chart.groups(groups);
+    }
+  }, {
     key: 'unloadData',
     value: function unloadData() {
       this.chart.unload();
@@ -91,7 +96,8 @@ var C3Chart = function (_React$Component) {
       if (config.unloadBeforeLoad) {
         this.unloadData();
       }
-
+      
+      this.updateGroups(config.data.groups);
       this.loadNewData(config.data);
     }
   }, {
