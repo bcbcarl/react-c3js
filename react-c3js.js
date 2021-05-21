@@ -52,7 +52,7 @@ var C3Chart = function (_React$Component) {
             mouse = d3.mouse(element);
         if (navigator.userAgent.indexOf("Firefox") != -1) {
           // this works in Firefox
-          mouse = [d3.event.offsetX - tWidth / 2 + 20, d3.event.offsetY - tHeight - 20];
+          mouse = [d3.event.offsetX - 80, d3.event.offsetY - 80];
         }
         // Determin tooltip position
         if (forArc) {
@@ -83,8 +83,10 @@ var C3Chart = function (_React$Component) {
         if (tooltipTop < 0) {
           tooltipTop = 0;
         }
+
         return { top: tooltipTop, left: tooltipLeft };
       };
+
       this.updateChart(this.props);
     }
   }, {
