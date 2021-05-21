@@ -41,6 +41,52 @@ var C3Chart = function (_React$Component) {
     key: 'componentDidMount',
     value: function componentDidMount() {
       c3 = require('c3');
+
+      // function override
+      c3.chart.internal.fn.tooltipPosition = function (dataToShow, tWidth, tHeight, element) {
+        var $$ = this,
+            config = $$.config,
+            d3 = $$.d3;
+        var svgLeft, tooltipLeft, tooltipRight, tooltipTop, chartRight;
+        var forArc = $$.hasArcType(),
+            mouse = d3.mouse(element);
+        if (navigator.userAgent.indexOf("Firefox") != -1) {
+          // this works in Firefox
+          mouse = [d3.event.offsetX - 80, d3.event.offsetY - 80];
+        }
+        // Determin tooltip position
+        if (forArc) {
+          tooltipLeft = ($$.width - ($$.isLegendRight ? $$.getLegendWidth() : 0)) / 2 + mouse[0];
+          tooltipTop = $$.height / 2 + mouse[1] + 20;
+        } else {
+          svgLeft = $$.getSvgLeft(true);
+          if (config.axis_rotated) {
+            tooltipLeft = svgLeft + mouse[0] + 100;
+            tooltipRight = tooltipLeft + tWidth;
+            chartRight = $$.currentWidth - $$.getCurrentPaddingRight();
+            tooltipTop = $$.x(dataToShow[0].x) + 20;
+          } else {
+            tooltipLeft = svgLeft + $$.getCurrentPaddingLeft(true) + $$.x(dataToShow[0].x) + 20;
+            tooltipRight = tooltipLeft + tWidth;
+            chartRight = svgLeft + $$.currentWidth - $$.getCurrentPaddingRight();
+            tooltipTop = mouse[1] + 15;
+          }
+
+          if (tooltipRight > chartRight) {
+            // 20 is needed for Firefox to keep tooltip width
+            tooltipLeft -= tooltipRight - chartRight + 20;
+          }
+          if (tooltipTop + tHeight > $$.currentHeight) {
+            tooltipTop -= tHeight + 30;
+          }
+        }
+        if (tooltipTop < 0) {
+          tooltipTop = 0;
+        }
+
+        return { top: tooltipTop, left: tooltipLeft };
+      };
+
       this.updateChart(this.props);
     }
   }, {
