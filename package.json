@@ -32,8 +32,8 @@
   "homepage": "https://github.com/bcbcarl/react-c3js#readme",
   "peerDependencies": {
     "prop-types": "^15.5.0",
-    "react": "^15.5.0 || ^16.0.0",
-    "react-dom": "^15.5.0 || ^16.0.0"
+    "react": "^15.5.0 || ^16.0.0  || ^18.2.0",
+    "react-dom": "^15.5.0 || ^16.0.0" || ^18.2.0
   },
   "dependencies": {
     "c3": "^0.4.11"
