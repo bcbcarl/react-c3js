@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { BarChart, DynamicChart } from './components';
+import C3ChartSrc from '../../src/index';
+
 
 const chartData = {
   line: {
@@ -27,6 +29,7 @@ ReactDOM.render(
   <div>
     <h1>react-c3js</h1>
     <h2>Line Chart</h2>
+    {/* <C3ChartSrc/> */}
     <DynamicChart
       initData={chartData.line.initData}
       newData={chartData.line.newData} />

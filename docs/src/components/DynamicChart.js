@@ -24,9 +24,9 @@ class DynamicChart extends React.Component {
 
   componentDidMount() {
     this.setState({ data: this.props.initData });
-    setTimeout(() => this.setState({
-      data: this.props.newData
-    }), 1200);
+    setInterval(() => this.setState({
+      data: [this.props.newData, this.props.initData][Math.round(Math.random()*1)]
+    }), 2000);
   }
 
   render() {

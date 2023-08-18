@@ -10,7 +10,8 @@
   ],
   "scripts": {
     "clean": "make clean",
-    "build": "make build"
+    "build": "make build",
+    "start": "budo docs/src/index.js:app.js --live -- -t babelify"
   },
   "repository": {
     "type": "git",
@@ -24,30 +25,37 @@
     "chart",
     "graph"
   ],
-  "author": "Carl X. Su <bcbcarl@gmail.com>",
+  "author": "Clockwork",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/bcbcarl/react-c3js/issues"
   },
   "homepage": "https://github.com/bcbcarl/react-c3js#readme",
   "peerDependencies": {
-    "prop-types": "^15.5.0",
-    "react": "^15.5.0 || ^16.0.0",
-    "react-dom": "^15.5.0 || ^16.0.0"
+    "prop-types": "^15.8.1",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
   },
   "dependencies": {
-    "c3": "^0.4.11"
+    "c3": "^0.4.24",
+    "d3": "^7.8.5"
   },
   "devDependencies": {
+    "@babel/cli": "7.22.5",
+    "@babel/core": "7.22.5",
+    "@babel/plugin-transform-object-assign": "7.22.5",
+    "@babel/preset-env": "7.22.5",
+    "@babel/preset-react": "7.22.5",
     "@types/c3": "^0.4.41",
     "@types/react": "^15.0.21",
     "@types/react-dom": "^0.14.23",
-    "babel-cli": "^6.24.1",
-    "babel-plugin-transform-object-assign": "^6.22.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
-    "prop-types": "^15.5.4",
-    "react": "^15.5.3",
-    "react-dom": "^15.5.3"
+    "@types/recompose": "^0.30.10",
+    "babelify": "^10.0.0",
+    "browserify": "^17.0.0",
+    "budo": "^11.8.4",
+    "prop-types": "^15.8.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "recompose": "npm:react-recompose"
   }
 }
